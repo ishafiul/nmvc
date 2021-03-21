@@ -1,7 +1,7 @@
 <?php
   class Pages extends Controller {
     public function __construct(){
-     
+     //your models gose here . example : $this->ModelName = $this->model('model_class_name');
     }
     
     public function index(){

@@ -1,9 +1,6 @@
 <?php
 class Posts extends Controller{
    public function __construct(){
-       /* if(!isLoggedIn()){
-            redirect('users/login');
-        }*/
         $this->postModel =$this->model('Post');
         $this->userModel =$this->model('User');
     }
