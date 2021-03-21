@@ -30,3 +30,4 @@
           $this->view('pages/contact', $data);
       }
   }
+
