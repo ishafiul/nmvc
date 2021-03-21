@@ -33,7 +33,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -54,53 +53,11 @@
       <workItem from="1615963480081" duration="2162000" />
       <workItem from="1615969097361" duration="2381000" />
       <workItem from="1616051145191" duration="12043000" />
-      <workItem from="1616130955050" duration="40879000" />
+      <workItem from="1616130955050" duration="39984000" />
     </task>
-    <task id="LOCAL-00001" summary="simple blog system with php mvc">
-      <created>1616312424077</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1616312424077</updated>
-    </task>
-    <task id="LOCAL-00002" summary="simple blog system with php mvc">
-      <created>1616312830924</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1616312830924</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="simple blog system with php mvc" />
-    <option name="LAST_COMMIT_MESSAGE" value="simple blog system with php mvc" />
   </component>
 </project>
