@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcd663b7-55dc-4067-9230-dd53782c54f5" name="Default Changelist" comment="" />
+    <list default="true" id="bcd663b7-55dc-4067-9230-dd53782c54f5" name="Default Changelist" comment="reversing all modified changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,9 +55,56 @@
       <workItem from="1616051145191" duration="12043000" />
       <workItem from="1616130955050" duration="39984000" />
     </task>
+    <task id="LOCAL-00001" summary="small fix">
+      <created>1616338046801</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616338046801</updated>
+    </task>
+    <task id="LOCAL-00002" summary="small fix">
+      <created>1616338097687</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1616338097687</updated>
+    </task>
+    <task id="LOCAL-00003" summary="did small changes">
+      <created>1616338153299</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616338153299</updated>
+    </task>
+    <task id="LOCAL-00004" summary="reversing all modified changes">
+      <created>1616338179247</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616338179247</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="small fix" />
+    <MESSAGE value="did small changes" />
+    <MESSAGE value="reversing all modified changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="reversing all modified changes" />
   </component>
 </project>
