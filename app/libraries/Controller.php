@@ -3,7 +3,7 @@
    * Base Controller
    * Loads the models and views
    */
-  class Controller {
+  abstract class Controller {
     // Load model
     public function model($model){
       // Require model file
@@ -21,6 +21,7 @@
       } else {
         // View does not exist
         die('View does not exist');
+        //redirect('pages/error');
       }
     }
   }
