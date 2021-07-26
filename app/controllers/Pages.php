@@ -1,33 +1,11 @@
 <?php
-  class Pages extends Controller {
+class Pages extends Controller {
     public function __construct(){
-     //your models gose here . example : $this->ModelName = $this->model('model_class_name');
-    }
-    
-    public function index(){
-      $data = [
-        'title' => 'BlogMVC',
-        'description' => ''
-      ];
-     
-      $this->view('pages/index', $data);
     }
 
-    public function about(){
-      $data = [
-        'title' => 'About Us',
-        'description' => 'App to share posts with other users'
-      ];
+    public function index()
+    {// function name will define what will be the page url that user will input
 
-      $this->view('pages/about', $data);
+        $this->view('pages/index'); // which view will load
     }
-      public function contact(){
-          $data = [
-              'title' => 'Contacts Us',
-              'description' => 'Blog MVC'
-          ];
-
-          $this->view('pages/contact', $data);
-      }
-
-  }
+}

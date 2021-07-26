@@ -1,0 +1,13 @@
+{
+    "require": {
+        "vlucas/phpdotenv": "^5.3",
+        "league/omnipay": "^3.2",
+        "omnipay/paypal": "^3.0"
+    },
+    "autoload": {
+        "classmap": [
+            "app/libraries",
+            "app/helpers"
+        ]
+    }
+}

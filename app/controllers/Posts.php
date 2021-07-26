@@ -6,7 +6,7 @@ class Posts extends Controller{
     }
    public function index(){
        //get posts
-       $posts = $this->postModel->getPosts();
+       $posts = $this->postModel->getPosts(); // call models
        $data =[
            'page_title' => 'All Post',
            'description' => 'All post here ',

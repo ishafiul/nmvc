@@ -100,7 +100,7 @@
         ];
 
         // Load view
-        $this->view('users/register', $data);
+        $this->view('users/register', $data); // from where this post method will work
       }
     }
 
@@ -108,6 +108,7 @@
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
+
         // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
@@ -167,7 +168,7 @@
         ];
 
         // Load view
-        $this->view('users/login', $data);
+        $this->view('users/login', $data);// from where this post method will work
       }
     }
 

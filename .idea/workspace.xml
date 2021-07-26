@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bcd663b7-55dc-4067-9230-dd53782c54f5" name="Default Changelist" comment="making changes in post.php file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Pages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Posts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Posts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/inc/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pages/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +62,10 @@
       <workItem from="1615969097361" duration="2381000" />
       <workItem from="1616051145191" duration="12043000" />
       <workItem from="1616130955050" duration="39984000" />
+      <workItem from="1616795258906" duration="1046000" />
+      <workItem from="1616829548753" duration="1938000" />
+      <workItem from="1617010263587" duration="7000" />
+      <workItem from="1622143867616" duration="1901000" />
     </task>
     <task id="LOCAL-00001" summary="small fix">
       <created>1616338046801</created>
