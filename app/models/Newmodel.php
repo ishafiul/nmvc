@@ -7,4 +7,5 @@ class Newmodel
     {
         $this->db = new Database;
     }
+    //this is a demo model
 }
