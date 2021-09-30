@@ -37,8 +37,10 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASS=123
 DB_NAME=test
-
-###### crete controller
+## controller
+you can crete contoller class inside 
+###### app->controllers->
+###### example:
 ```sh
 <?php
 class Pages extends Controller {
