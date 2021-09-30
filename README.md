@@ -1,4 +1,4 @@
-# simple-mvc-with-php
+# simple-mvc-with-php(NMVC)
 The NMVC can be installed with [Composer]. Run this command:
 ```sh
 composer create-project shafiul-islam/nmvc
