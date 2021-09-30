@@ -37,3 +37,18 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASS=123
 DB_NAME=test
+
+###### crete controller
+```sh
+<?php
+class Pages extends Controller {
+    public function __construct(){
+    }
+
+    public function index()
+    {// function name will define what will be the page url that user will input
+
+        $this->view('pages/index'); // which view will load
+    }
+}
+```
