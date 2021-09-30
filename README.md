@@ -1,7 +1,7 @@
 # simple-mvc-with-php
 
 ```sh
-composer require facebook/graph-sdk
+composer create-project shafiul-islam/nmvc
 ```
 
 # config:
