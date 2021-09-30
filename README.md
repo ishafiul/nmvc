@@ -1,5 +1,9 @@
 # simple-mvc-with-php
 
+```sh
+composer require facebook/graph-sdk
+```
+
 # config:
 ## path
 you need to change path, before deploy. you can find it from 
