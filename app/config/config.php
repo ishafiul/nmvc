@@ -4,8 +4,8 @@ define('APPROOT', dirname(dirname(__FILE__)));
 $f =APPROOT;
 define('HELPERS', $f.'/helpers');
 // URL Root
-define('URLROOT', 'http://localhost/csv');
-define('DOCROOT', $_SERVER['DOCUMENT_ROOT'].'/csv');
+define('URLROOT', 'http://localhost/simple-mvc-with-php');
+define('DOCROOT', $_SERVER['DOCUMENT_ROOT'].'/simple-mvc-with-php');
 // Site Name
 define('SITENAME', 'SITE NAME');
 // App Version
