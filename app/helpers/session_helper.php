@@ -78,4 +78,74 @@ function isLoggedIn(){
         return false;
     }
 }
+function loadmore($totaldata,$limit,$rowcount,$loadbutton,$postarea,$url){
+   ?>
+    <script>
+        $(document).ready(function(){
+
+            // Load more data
+            $('<?php echo $loadbutton?>').click(function(){
+                var row = Number($('<?php echo $rowcount?>').val());
+                var allcount = <?php echo $totaldata?>;
+                row = row + <?php echo $limit?>;
+
+                if(row <= allcount){
+                    $("<?php echo $rowcount?>").val(row);
+
+                    $.ajax({
+                        url: '<?php echo $url?>',
+                        type: 'post',
+                        data: {row:row},
+                        beforeSend:function(){
+                            $("<?php echo $loadbutton?>").text("Loading...");
+                        },
+                        success: function(response){
+
+                            // Setting little delay while displaying new content
+                            setTimeout(function() {
+                                // appending posts after last post with class="post"
+                                $("<?php echo $postarea?>:last").after(response).show().fadeIn("slow");
+
+                                var rowno = row + <?php echo $limit?>;
+
+                                // checking row value is greater than allcount or not
+                                if(rowno > allcount){
+
+                                    // Change the text and background
+                                    $('<?php echo $loadbutton?>').text("Hide");
+                                }else{
+                                    $("<?php echo $loadbutton?>").text("Load more");
+                                }
+                            }, 2000);
+
+
+                        }
+                    });
+                }else{
+                    $('<?php echo $loadbutton?>').text("Loading...");
+
+                    // Setting little delay while removing contents
+                    setTimeout(function() {
+
+                        // When row is greater than allcount then remove all class='post' element after  element
+                        $('<?php echo $postarea?>:nth-child(<?php echo $limit?>)').nextAll('<?php echo $postarea?>').remove().fadeIn("slow");
+
+                        // Reset the value of row
+                        $("<?php echo $rowcount?>").val(0);
+
+                        // Change the text and background
+                        $('<?php echo $loadbutton?>').text("Load more");
+
+                    }, 1000);
+
+
+                }
+
+            });
+
+        });
+    </script>
+<?php
+}
+?>
 
