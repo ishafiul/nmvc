@@ -1,15 +1,9 @@
 {
-    "name": "shafiul-islam/nmvc",
-    "description": "simple mvc that can handel simple site",
-    "type": "project",
+    "name": "shafi/new-mvc",
     "autoload": {
         "psr-4": {
-            "ShafiulIslam\\Nmvc\\": "src/"
-        },
-        "classmap": [
-            "app/libraries",
-            "app/helpers"
-        ]
+            "app\\": "./app"
+        }
     },
     "authors": [
         {
@@ -18,8 +12,7 @@
         }
     ],
     "require": {
-        "vlucas/phpdotenv": "^5.3",
-        "league/omnipay": "^3.2",
-        "omnipay/paypal": "^3.0"
+      "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.4"
     }
 }
