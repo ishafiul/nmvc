@@ -8,9 +8,9 @@ class App
     /**
      * @var App
      */
-    public static $app;
-    public $router;
-    public $request;
+    public static App $app;
+    public Router $router;
+    public Request $request;
     public $controller = null;
     /**
      * @var View
@@ -21,7 +21,7 @@ class App
     {
         self::$app = $this;
         $this->request =new Request();
-        $this->router =new Router($this->request);
+        $this->router = new Router($this->request);
         $this->view =new View();
     }
 

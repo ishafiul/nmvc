@@ -2,9 +2,11 @@
 
 namespace app\core;
 
+use JetBrains\PhpStorm\Pure;
+
 class Request
 {
-    public function getMethod()
+    public function getMethod(): string
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
@@ -17,16 +19,17 @@ class Request
         }
         return $path;
     }
-    public function isGet()
+    #[Pure] public function isGet(): bool
     {
         return $this->getMethod() === 'get';
     }
 
-    public function isPost()
+    #[Pure] public function isPost(): bool
     {
         return $this->getMethod() === 'post';
     }
-    public function getBody(){
+    #[Pure] public function getBody(): array
+    {
         $data = [];
         if ($this->isGet()) {
             foreach ($_GET as $key => $value) {

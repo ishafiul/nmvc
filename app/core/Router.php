@@ -4,8 +4,8 @@ namespace app\core;
 
 class Router
 {
-    protected $routes =[];
-    public $request;
+    protected array $routes =[];
+    public Request $request;
 
 
     public function __construct(Request $request)
@@ -27,12 +27,7 @@ class Router
     {
         $method = $this->request->getMethod();
         $url = $this->request->getUrl();
-        if (isset($this->routes[$method][$url])){
-            $callback = $this->routes[$method][$url];
-        }
-        else{
-            $callback = false;
-        }
+        $callback = $this->routes[$method][$url] ?? false;
         if (!$callback) {
             echo 'error';
         }
@@ -51,6 +46,7 @@ class Router
         }
         //var_dump($callback);
         //var_dump($this->routes[$method][$url]);
+        return 'something wrong';
     }
 
 

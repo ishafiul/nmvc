@@ -2,6 +2,7 @@
 use app\controllers\Pages;
 use app\core\App;
 use app\core\Request;
+use app\core\Router;
 
 $app =new app();
 $app->router->get('/',function (Request $request){
