@@ -4,7 +4,7 @@ namespace app\core;
 
 class Router
 {
-    protected array $routes =[];
+    public array $routes =[];
     public Request $request;
 
 
@@ -27,6 +27,8 @@ class Router
     {
         $method = $this->request->getMethod();
         $url = $this->request->getUrl();
+        $position = strpos($url,'public')+6;
+        $url = substr($url,$position);
         $callback = $this->routes[$method][$url] ?? false;
         if (!$callback) {
             echo 'error';

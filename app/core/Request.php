@@ -19,16 +19,16 @@ class Request
         }
         return $path;
     }
-    #[Pure] public function isGet(): bool
+     public function isGet(): bool
     {
         return $this->getMethod() === 'get';
     }
 
-    #[Pure] public function isPost(): bool
+    public function isPost(): bool
     {
         return $this->getMethod() === 'post';
     }
-    #[Pure] public function getBody(): array
+     public function getBody(): array
     {
         $data = [];
         if ($this->isGet()) {
