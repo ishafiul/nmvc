@@ -1,7 +1,7 @@
 <?php
+
 use app\controllers\Pages;
 use app\core\App;
-
 $app =new app();
 $app->router->get('/',function (){
     echo 'this is a function approach';

@@ -5,6 +5,10 @@ namespace app\core;
 use PDO;
 use PDOException;
 
+use Dotenv\Dotenv;
+$dotenv=Dotenv::createImmutable(dirname(__DIR__, 2));
+$dotenv->load();
+
 class Database
 {
     private $dbh;

@@ -13,7 +13,7 @@ class Pages extends Controller
         $model = new Test();
         if ($request->isGet()){
             $data =[
-                'dfsdf'=>'dsf',
+                'dfsdf'=>$_ENV['DB_NAME'],
                 'model'=>$model
             ];
             $this->view('index',$data);
