@@ -14,8 +14,6 @@ class Test extends Model
     {
         //echo $this->submit;
     }
-
-
     public function rules(): array
     {
         return [

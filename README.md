@@ -6,7 +6,7 @@ NMVC is a PHP base MVC framework
 The NMVC can be installed with [Composer](https://getcomposer.org/).
 
 ```sh
-composer create-project shafiul-islam/nmvc.php
+composer create-project shafiul-islam/nmvc <project_name>
 ```
 ## Directory Structure
 ```
@@ -79,3 +79,26 @@ $app->router->get('/hello','hello');
 ```
 #### API Routing
 coming soon
+### NMVC CLI
+NMVC ClI will make your development process much easier and faster.
+its a build in tool. you can crete controller,model, make migration by using cmd command.
+
+run `php nmvc`
+```
+Options:
+-h, --help            Display help for the given command. When no command is given display help for the list command
+-q, --quiet           Do not output any message
+-V, --version         Display this application version
+--ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
+-n, --no-interaction  Do not ask any interactive question
+-v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+Available commands:
+completion           Dump the shell completion script
+help                 Display help for a command
+list                 List commands
+generate
+generate:controller  Greet a user based on the time of the day.
+
+```
+

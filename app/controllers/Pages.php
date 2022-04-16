@@ -19,7 +19,6 @@ class Pages extends Controller
             $this->view('index',$data);
         }
         if ($request->isPost()){
-
             $model->loaddata($request->getBody());
             $model->validate();
             //var_dump($model->errors);
