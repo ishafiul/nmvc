@@ -8,7 +8,7 @@ use app\models\Test;
 
 class Pages extends Controller
 {
- /*   public function index(Request $request){
+    public function index(Request $request){
 
         $model = new Test();
         if ($request->isGet()){
@@ -40,5 +40,5 @@ class Pages extends Controller
             var_dump($request->getBody(), $request->getRouteParam('id'));
             echo '</pre>';
         }
-    }*/
+    }
 }
