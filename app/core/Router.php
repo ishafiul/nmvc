@@ -87,23 +87,30 @@ class Router
         if (!$callback) {
 
             $callback = $this->getCallback();
-
-            if ($callback === false) {
-                echo 'error';
+            if (!$callback){
+                echo 'err';
             }
         }
         if (is_string($callback)){
-            App::$app->view->render($callback);
+
+            if (App::$app->view->isViewExist($callback)){
+                App::$app->view->render($callback);
+            }
+            else{
+                echo 'error';
+            }
         }
         if (is_array($callback)){
             $controller = new $callback[0];
             $controller->action = $callback[1];
             App::$app->controller = $controller;
             $callback[0] = $controller;
+        }
+        if (!is_string($callback) && call_user_func($callback,$this->request)){
             return call_user_func($callback,$this->request);
         }
         else{
-            return call_user_func($callback,$this->request);
+            return 'something wrong';
         }
     }
 }

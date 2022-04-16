@@ -34,9 +34,10 @@ class Pages extends Controller
     }
     public function hola(Request $request){
 
+        $model = new Test();
         if ($request->isGet()){
             echo '<pre>';
-            var_dump( $request->getRouteParam('id'));
+            var_dump($request->getBody(), $request->getRouteParam('id'));
             echo '</pre>';
         }
     }

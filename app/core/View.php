@@ -28,7 +28,12 @@ class View
         include_once __DIR__.'./../views/layouts/app.php';
         return ob_get_clean();
     }
-
-
-
+    public function isViewExist($view){
+        if (file_exists( __DIR__.'./../views/'.$view.'.php')){
+           return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
