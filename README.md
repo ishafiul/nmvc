@@ -6,7 +6,7 @@ NMVC is a PHP base MVC framework
 The NMVC can be installed with [Composer](https://getcomposer.org/).
 
 ```sh
-composer create-project shafiul-islam/nmvc
+composer create-project shafiul-islam/nmvc.php
 ```
 ## Directory Structure
 ```
