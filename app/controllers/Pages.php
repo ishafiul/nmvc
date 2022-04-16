@@ -9,6 +9,7 @@ use app\models\Test;
 class Pages extends Controller
 {
     public function index(Request $request){
+
         $model = new Test();
         if ($request->isGet()){
             $data =[
@@ -29,6 +30,14 @@ class Pages extends Controller
                 'model'=>$model
             ];
             $this->view('index',$data);
+        }
+    }
+    public function hola(Request $request){
+
+        if ($request->isGet()){
+            echo '<pre>';
+            var_dump( $request->getRouteParam('id'));
+            echo '</pre>';
         }
     }
 }

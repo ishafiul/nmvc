@@ -6,6 +6,7 @@ use JetBrains\PhpStorm\Pure;
 
 class Request
 {
+    private array $routeParams = [];
     public function getMethod(): string
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
@@ -42,6 +43,21 @@ class Request
             }
         }
         return $data;
+    }
+    public function setRouteParams($params)
+    {
+        $this->routeParams = $params;
+        return $this;
+    }
+
+    public function getRouteParams()
+    {
+        return $this->routeParams;
+    }
+
+    public function getRouteParam($param, $default = null)
+    {
+        return $this->routeParams[$param] ?? $default;
     }
 
 }

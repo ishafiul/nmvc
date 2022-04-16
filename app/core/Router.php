@@ -23,6 +23,60 @@ class Router
         $this->routes['post'][$path] = $callback;
     }
 
+    public function getRouteMap($method): array
+    {
+        return $this->routes[$method] ?? [];
+    }
+
+    public function getCallback()
+    {
+        $method = $this->request->getMethod();
+        $url = $this->request->getUrl();
+        $position = strpos($url,'public')+6;
+        $url = substr($url,$position);
+        // Trim slashes
+        $url = trim($url, '/');
+
+        // Get all routes for current request method
+        $routes = $this->getRouteMap($method);
+
+        $routeParams = false;
+
+        // Start iterating registed routes
+        foreach ($routes as $route => $callback) {
+            // Trim slashes
+            $route = trim($route, '/');
+            $routeNames = [];
+
+            if (!$route) {
+                continue;
+            }
+
+            // Find all route names from route and save in $routeNames
+            if (preg_match_all('/\{(\w+)(:[^}]+)?}/', $route, $matches)) {
+                $routeNames = $matches[1];
+            }
+
+            // Convert route name into regex pattern
+            $routeRegex = "@^" . preg_replace_callback('/\{\w+(:([^}]+))?}/', fn($m) => isset($m[2]) ? "({$m[2]})" : '(\w+)', $route) . "$@";
+
+            // Test and match current route against $routeRegex
+            if (preg_match_all($routeRegex, $url, $valueMatches)) {
+                $values = [];
+                for ($i = 1; $i < count($valueMatches); $i++) {
+                    $values[] = $valueMatches[$i][0];
+                }
+                $routeParams = array_combine($routeNames, $values);
+
+                $this->request->setRouteParams($routeParams);
+                return $callback;
+            }
+        }
+
+        return $url;
+    }
+
+
     public function resolve()
     {
         $method = $this->request->getMethod();
@@ -31,12 +85,17 @@ class Router
         $url = substr($url,$position);
         $callback = $this->routes[$method][$url] ?? false;
         if (!$callback) {
-            echo 'error';
+
+            $callback = $this->getCallback();
+
+            if ($callback === false) {
+                echo 'error';
+            }
         }
-        else if (is_string($callback)){
-             App::$app->view->render($callback);
+        if (is_string($callback)){
+            App::$app->view->render($callback);
         }
-        elseif (is_array($callback)){
+        if (is_array($callback)){
             $controller = new $callback[0];
             $controller->action = $callback[1];
             App::$app->controller = $controller;
@@ -46,10 +105,5 @@ class Router
         else{
             return call_user_func($callback,$this->request);
         }
-        //var_dump($callback);
-        //var_dump($this->routes[$method][$url]);
-        return 'something wrong';
     }
-
-
 }
