@@ -13,9 +13,16 @@ class Migrations
     }
     public function applyMigrations(){
         $this->createMigrationTable();
-        $appliedMigrations = $this->getAplliedMigrations();
+        $appliedMigrations = array_values($this->getAplliedMigrations());
         $files = scandir(dirname(__DIR__, 4).'\migrations');
-        $toApplyMigrations = array_diff($files, $appliedMigrations);
+        $objAppliedMigrations = $appliedMigrations;
+        $appliedMigrationsArr = [];
+        foreach ($objAppliedMigrations as $arry){
+            $appliedMigrationsArr[] = $arry->migration;
+        }
+        $toApplyMigrations = array_diff($files, $appliedMigrationsArr);
+        //var_export($toApplyMigrations);
+
         foreach ($toApplyMigrations as $migration) {
             if ($migration === '.' || $migration === '..') {
                 continue;
@@ -26,7 +33,7 @@ class Migrations
             //echo $className;
             $instance = new $className();
             $this->log("Applying migration $migration");
-            //$instance->up();
+            $instance->up();
             $this->log("Applied migration $migration");
             $newMigrations[] = $migration;
         }
@@ -36,7 +43,7 @@ class Migrations
         } else {
             $this->log("There are no migrations to apply");
         }
-        return $appliedMigrations;
+        return 'ok';
     }
     public function createMigrationTable(): void
     {
@@ -62,5 +69,42 @@ class Migrations
     private function log($message)
     {
         echo "[" . date("Y-m-d H:i:s") . "] - " . $message . PHP_EOL;
+    }
+
+    public function createMigration($name)
+    {
+        $path = dirname(__DIR__, 4).'\migrations';
+        $className ='migration_'. ucfirst($name);
+        if (file_exists($path.'/'.$className.'.php')){
+            return '<fg=#f9c33d>'.'Migration Already Exist!'.'</>';
+        }
+        else{
+            $creteFile = fopen($path.'/'.$className.'.php','w');
+            $code = '<?php 
+use app\core\Database;
+            
+class '.$className.'
+{
+   private Database $db;
+
+    public function __construct()
+    {
+        $this->db= new Database();
+    }
+    public function up(){
+        $this->db->query("CREATE TABLE IF NOT EXISTS '.$name.' (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )  ENGINE=INNODB;");
+        $this->db->execute();
+    }
+    public function down(){
+    
+    }
+}
+';
+            fwrite($creteFile,$code);
+            return '<fg=green>'.$className.' Migration Created!'.'</>';
+        }
     }
 }

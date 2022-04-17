@@ -5,7 +5,6 @@ use app\components\form\BasicForm;
 <div class="mt-1 flex rounded-md shadow-sm">
 </div>
 <?php
-echo $dfsdf;
 ?>
 <div class="w-full max-w-xs">
     <?php BasicForm::start('post',["class"=>"bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"]);?>

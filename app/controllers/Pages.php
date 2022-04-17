@@ -24,6 +24,7 @@ class Pages extends Controller
             //var_dump($model->errors);
             if ($model->validate()){
                 echo 'success';
+                var_export($model);
             }
             $data =[
                 'model'=>$model
@@ -32,7 +33,6 @@ class Pages extends Controller
         }
     }
     public function hola(Request $request){
-
         $model = new Test();
         if ($request->isGet()){
             echo '<pre>';

@@ -35,4 +35,12 @@ class Command extends SymfonyCommand
         // outputs a message without adding a "\n" at the end of the line
         $output -> write($this->migration->applyMigrations());
     }
+    protected function createMigration(InputInterface $input, OutputInterface $output)
+    {
+        // outputs multiple lines to the console (adding "\n" at the end of each line)
+        $output -> writeln('<fg=green>====**** Creating migration file ****====</>');
+
+        // outputs a message without adding a "\n" at the end of the line
+        $output -> write($this->migration->createMigration($input -> getArgument('name')));
+    }
 }
