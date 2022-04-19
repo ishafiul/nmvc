@@ -8,6 +8,14 @@ The NMVC can be installed with [Composer](https://getcomposer.org/).
 ```sh
 composer create-project shafiul-islam/nmvc <project_name>
 ```
+## Run Your Project
+
+By using [PHP Built-in web server](https://www.php.net/manual/en/features.commandline.webserver.php) you can run your project easily
+
+```sh
+composer serve
+```
+you can change the port if you need
 ## Directory Structure
 ```
 nmvc

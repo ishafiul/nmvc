@@ -32,8 +32,8 @@ class Router
     {
         $method = $this->request->getMethod();
         $url = $this->request->getUrl();
-        $position = strpos($url,'public')+6;
-        $url = substr($url,$position);
+        /*$position = strpos($url,'public')+6;
+        $url = substr($url,$position);*/
         // Trim slashes
         $url = trim($url, '/');
 
@@ -81,15 +81,10 @@ class Router
     {
         $method = $this->request->getMethod();
         $url = $this->request->getUrl();
-        $position = strpos($url,'public')+6;
-        $url = substr($url,$position);
         $callback = $this->routes[$method][$url] ?? false;
         if (!$callback) {
 
             $callback = $this->getCallback();
-            if (!$callback){
-                echo 'err';
-            }
         }
         if (is_string($callback)){
 

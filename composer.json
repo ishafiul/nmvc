@@ -12,6 +12,9 @@
             "email": "shafiulislam20@gmail.com"
         }
     ],
+    "scripts": {
+        "serve": "php -S localhost:3000 -t public/"
+    },
     "require": {
       "ext-pdo": "*",
         "vlucas/phpdotenv": "^5.4",

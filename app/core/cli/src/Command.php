@@ -5,18 +5,21 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Console\functions\Controller;
 use Console\functions\Migrations;
+use Console\functions\Serve;
 
 class Command extends SymfonyCommand
 {
 
     private Controller $controller;
     private Migrations $migration;
+    private Serve $serve;
 
     public function __construct()
     {
         parent::__construct();
         $this->controller = new Controller();
         $this->migration = new Migrations();
+        $this->serve = new Serve();
     }
 
     protected function generateController(InputInterface $input, OutputInterface $output)
