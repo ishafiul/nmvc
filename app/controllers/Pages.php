@@ -1,22 +1,43 @@
 <?php
-class Pages extends Controller {
-    public function __construct(){
-        $this->gg = $this->model('Newmodel');
-    }
 
-    public function index()
-    {
-        $this->view('pages/index'); // which view will load
+namespace app\controllers;
+
+use app\core\Controller;
+use app\core\Request;
+use app\models\Test;
+
+class Pages extends Controller
+{
+    public function index(Request $request){
+
+        $model = new Test();
+        if ($request->isGet()){
+            $data =[
+                'dfsdf'=>$_ENV['DB_NAME'],
+                'model'=>$model
+            ];
+            $this->view('index',$data);
+        }
+        if ($request->isPost()){
+            $model->loaddata($request->getBody());
+            $model->validate();
+            //var_dump($model->errors);
+            if ($model->validate()){
+                echo 'success';
+                var_export($model);
+            }
+            $data =[
+                'model'=>$model
+            ];
+            $this->view('index',$data);
+        }
     }
-    public function load()
-    {
-        $data = $this->gg->getinitdata(3);
-        $this->view('pages/loadmore',$data); // which view will load
-    }
-    public function data()
-    {
-        $row  = $_POST['row'];
-        $data = $this->gg->getnextdata($row,3);
-        $this->view('pages/data',$data); // which view will load
+    public function hola(Request $request){
+        $model = new Test();
+        if ($request->isGet()){
+            echo '<pre>';
+            var_dump($request->getBody(), $request->getRouteParam('id'));
+            echo '</pre>';
+        }
     }
 }
