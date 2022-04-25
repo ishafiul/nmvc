@@ -4,11 +4,12 @@ namespace app\core;
 
 class View
 {
-    public function render($view,$data=null){
+    public function render($view,$data=null,$http_code=null){
 
         $content = $this->content($view,$data);
         $layout = $this->layout();
         $view = str_replace('<!--content-->',$content,$layout);
+        http_response_code($http_code);
         echo $view;
     }
     private function content($view,$data): bool|string

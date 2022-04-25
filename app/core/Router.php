@@ -1,16 +1,18 @@
 <?php
 
 namespace app\core;
+use app\core\Exceptions\NotFound;
 
 class Router
 {
     public array $routes =[];
     public Request $request;
-
+    public NotFound $exception;
 
     public function __construct(Request $request)
     {
         $this->request = $request;
+        $this->exception = new NotFound();
     }
 
 
@@ -77,6 +79,9 @@ class Router
     }
 
 
+    /**
+     * @throws NotFound
+     */
     public function resolve()
     {
         $method = $this->request->getMethod();
@@ -92,13 +97,17 @@ class Router
                 App::$app->view->render($callback);
             }
             else{
-                echo 'error';
+                throw $this->exception;
             }
         }
         if (is_array($callback)){
             $controller = new $callback[0];
-            $controller->action = $callback[1];
+            App::$app->action = $callback[1];
             App::$app->controller = $controller;
+            $middlewares = $controller->middlewares;
+            foreach ($middlewares as $middleware) {
+                $middleware->execute();
+            }
             $callback[0] = $controller;
         }
         if (!is_string($callback) && call_user_func($callback,$this->request)){

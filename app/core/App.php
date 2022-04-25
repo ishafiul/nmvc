@@ -1,7 +1,6 @@
 <?php
 
 namespace app\core;
-use app\config\Config;
 class App
 {
 
@@ -11,7 +10,8 @@ class App
     public static App $app;
     public Router $router;
     public Request $request;
-    public $controller = null;
+    public Controller $controller;
+    public string $action = '';
     /**
      * @var View
      */
@@ -27,6 +27,13 @@ class App
 
     public function run()
     {
-        $this->router->resolve();
+        try {
+            $this->router->resolve();
+        }
+        catch (\Exception $e ){
+            $this->view->render('_error',[
+                "err"=>$e
+            ],$e->getCode());
+        }
     }
 }

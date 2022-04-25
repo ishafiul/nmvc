@@ -33,7 +33,7 @@ class Database
     }
 
     // Prepare statement with query
-    public function query($sql)
+    public function query($sql):void
     {
         $this->stmt = $this->dbh->prepare($sql);
     }

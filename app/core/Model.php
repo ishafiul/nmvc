@@ -4,6 +4,13 @@ namespace app\core;
 
 abstract class Model
 {
+    private Database $db;
+
+    public function __construct()
+    {
+        $this->db =new Database();
+    }
+
     const RULE_REQUIRED = 'required';
     const RULE_EMAIL = 'email';
     const RULE_MIN = 'min';
@@ -96,4 +103,27 @@ abstract class Model
         return $this->errors[$attr][0]??false;
     }
 
+    abstract public function tableName():string;
+    abstract public function attributes():array;
+    public function all(){
+        $this->db->query('SELECT * FROM '.$this->tableName());
+        return $this->db->resultSet();
+    }
+    public function delete($condition):string{
+        $this->db->query('DELETE FROM '.$this->tableName().' WHERE'.$condition);
+        $this->db->execute();
+        return true;
+    }
+    public function save()
+    {
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        $params = array_map(fn($attr) => ":$attr", $attributes);
+        $this->db->query('INSERT INTO '.$tableName.'( '.implode(",", $attributes) .' ) VALUES ( '. implode(",", $params).')');
+        foreach ($attributes as $attribute) {
+            $this->db->bind(":$attribute", $this->{$attribute});
+        }
+        $this->db->execute();
+        return true;
+    }
 }

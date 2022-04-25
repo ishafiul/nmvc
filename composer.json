@@ -1,5 +1,5 @@
 {
-    "name": "shafi/new-mvc",
+    "name": "shafi/mvc",
     "autoload": {
         "psr-4": {
             "app\\": "./app",

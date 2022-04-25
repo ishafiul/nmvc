@@ -4,10 +4,17 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Request;
+use app\middlewares\authMiddleware;
 use app\models\Test;
 
 class Pages extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware(new authMiddleware(['index']));
+    }
+
     public function index(Request $request){
 
         $model = new Test();

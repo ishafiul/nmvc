@@ -9,9 +9,13 @@ class Test extends Model
     public $submit;
     public $submit2;
 
-    public function insert()
+    public function tableName():string
     {
-        //echo $this->submit;
+        return 'test';
+    }
+    public function attributes():array
+    {
+        return ['firstname', 'lastname', 'email', 'password'];
     }
     public function rules(): array
     {
@@ -19,5 +23,8 @@ class Test extends Model
             'submit' => [self::RULE_EMAIL,self::RULE_REQUIRED,[self::RULE_MAX,'max'=>25]],
             'submit2' => [self::RULE_REQUIRED,[self::RULE_MATCH,'match'=>'submit']],
         ];
+    }
+    public function getData(){
+        return $this->all();
     }
 }
