@@ -4,8 +4,12 @@ namespace app\core;
 
 class View
 {
-    public function render($view,$data=null,$http_code=null){
-
+    public string $title=TITLE;
+    public string $description=DESCRIPTION;
+    public array $keywords=KEYWORDS;
+    public string $author=AUTHOR;
+    public function render($view,$data=null,$http_code=null): void
+    {
         $content = $this->content($view,$data);
         $layout = $this->layout();
         $view = str_replace('<!--content-->',$content,$layout);

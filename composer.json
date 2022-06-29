@@ -15,6 +15,9 @@
     "scripts": {
         "serve": "php -S localhost:3000 -t public/"
     },
+    "config": {
+        "process-timeout":0
+    },
     "require": {
       "ext-pdo": "*",
         "vlucas/phpdotenv": "^5.4",

@@ -12,9 +12,9 @@ class Controller extends Command
     {
         $this
             -> setName('generate:controller')
-            -> setDescription('Greet a user based on the time of the day.')
-            -> setHelp('This command allows you to greet a user based on the time of the day...')
-            -> addArgument('controllerName', InputArgument::REQUIRED, 'The username of the user.');
+            -> setDescription('Create a new controller')
+            -> setHelp('This command allows you to create new controller')
+            -> addArgument('controllerName', InputArgument::REQUIRED, 'Controller name.');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)

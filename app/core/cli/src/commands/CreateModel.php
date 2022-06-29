@@ -12,9 +12,9 @@ class CreateModel extends Command
     {
         $this
             -> setName('generate:model')
-            -> setDescription('Greet a user based on the time of the day.')
-            -> setHelp('This command allows you to greet a user based on the time of the day...')
-            -> addArgument('modelName', InputArgument::REQUIRED, 'The username of the user.');
+            -> setDescription('Create a new model')
+            -> setHelp('This command allows you to Create a new model')
+            -> addArgument('modelName', InputArgument::REQUIRED, 'Model name');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)

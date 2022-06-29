@@ -12,7 +12,7 @@ class Pages extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware(new authMiddleware(['index']));
+        //$this->middleware(new authMiddleware(['index']));
     }
 
     public function index(Request $request){
@@ -21,7 +21,13 @@ class Pages extends Controller
         if ($request->isGet()){
             $data =[
                 'dfsdf'=>$_ENV['DB_NAME'],
-                'model'=>$model
+                'model'=>$model,
+                'metadata'=>[
+                    'title'=>'Hello page',
+                    'description'=>'Here is my page description',
+                    'keywords'=>['test','hello'],
+                    'author'=>'ishaf',
+                ]
             ];
             $this->view('index',$data);
         }

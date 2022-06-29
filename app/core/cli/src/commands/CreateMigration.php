@@ -1,5 +1,7 @@
 <?php
+
 namespace Console\commands;
+
 use Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,14 +13,14 @@ class CreateMigration extends Command
     public function configure()
     {
         $this
-            -> setName('migration:create')
-            -> setDescription('Greet a user based on the time of the day.')
-            -> setHelp('This command allows you to greet a user based on the time of the day...')
-            -> addArgument('name', InputArgument::REQUIRED, 'The username of the user.');
+            ->setName('migration:create')
+            ->setDescription('Create a new migration file')
+            ->setHelp('This command allows you to Create a new migration file')
+            ->addArgument('name', InputArgument::REQUIRED, 'Migration name');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        return is_int($this -> createMigration($input, $output)) ? $this -> createMigration($input, $output) : 0;
+        return is_int($this->createMigration($input, $output)) ? $this->createMigration($input, $output) : 0;
     }
 }
