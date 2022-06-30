@@ -93,7 +93,7 @@ class Router
         }
         if (is_string($callback)){
 
-            if (App::$app->view->isViewExist($callback)){
+            if (App::$app->view->isViewExist($callback) && (isset($this->routes['get'][$callback]) || isset($this->routes['post'][$callback])) || $this->routes['get']['/'] == $callback){
                 App::$app->view->render($callback);
             }
             else{

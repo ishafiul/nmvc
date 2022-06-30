@@ -105,16 +105,53 @@ abstract class Model
 
     abstract public function tableName():string;
     abstract public function attributes():array;
+
     public function all(){
         $this->db->query('SELECT * FROM '.$this->tableName());
         return $this->db->resultSet();
     }
-    public function delete($condition):string{
+    public function getById($id, array $except=null){
+        $this->db->query('DROP TABLE IF EXISTS temp'.$this->tableName());
+        $this->db->execute();
+        if ($except==null){
+            $this->db->query('SELECT * FROM '.$this->tableName().' WHERE id ='.$id);
+        }else{
+
+            $this->db->query('CREATE TABLE temp'.$this->tableName().' SELECT * FROM '.$this->tableName());
+            $this->db->execute();
+            $this->db->query('ALTER TABLE temp'.$this->tableName().' DROP COLUMN '.implode(",", $except));
+            $this->db->execute();
+            $this->db->query('SELECT * FROM temp'.$this->tableName().' WHERE id ='.$id);
+            if (!empty($this->db->resultSet())){
+                $returnValue = $this->db->resultSet()[0];
+            }else{
+                $returnValue = false;
+            }
+
+            $this->db->query('DROP TABLE temp'.$this->tableName());
+            if ($this->db->execute()){
+                return $returnValue;
+            }
+
+        }
+        if (!empty($this->db->resultSet())){
+            return $this->db->resultSet()[0];
+        }else{
+            return false;
+        }
+    }
+
+    public function deleteAll($condition):string{
         $this->db->query('DELETE FROM '.$this->tableName().' WHERE'.$condition);
         $this->db->execute();
         return true;
     }
-    public function save()
+    public function delete($id):string{
+        $this->db->query('DELETE FROM '.$this->tableName().' WHERE id='.$id);
+        $this->db->execute();
+        return true;
+    }
+    public function save(): bool
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
@@ -125,5 +162,18 @@ abstract class Model
         }
         $this->db->execute();
         return true;
+    }
+    public function update($id): bool
+    {
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        $params = array_map(fn($attr) => "$attr=:$attr", $attributes);
+        $this->db->query('UPDATE '.$tableName.' SET '.implode(",", $params).' WHERE id='.$id);
+        foreach ($attributes as $attribute) {
+            $this->db->bind(":$attribute", $this->{$attribute});
+        }
+        $this->db->execute();
+        return true;
+
     }
 }
