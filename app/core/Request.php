@@ -50,11 +50,6 @@ class Request
         return $this;
     }
 
-    public function getRouteParams()
-    {
-        return $this->routeParams;
-    }
-
     public function getRouteParam($param, $default = null)
     {
         return $this->routeParams[$param] ?? $default;

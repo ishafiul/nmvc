@@ -5,21 +5,21 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Controller extends Command
+class CreateModel extends Command
 {
 
     public function configure()
     {
         $this
-            -> setName('generate:controller')
-            -> setDescription('Create a new controller')
-            -> setHelp('This command allows you to create new controller')
-            -> addArgument('controllerName', InputArgument::REQUIRED, 'Controller name.');
+            -> setName('generate:model')
+            -> setDescription('Create a new model')
+            -> setHelp('This command allows you to Create a new model')
+            -> addArgument('modelName', InputArgument::REQUIRED, 'Model name');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
         //$this -> greetUser($input, $output);
-        return is_int($this -> generateController($input, $output)) ? $this -> generateController($input, $output) : 0;
+        return is_int($this -> createModel($input, $output)) ? $this -> createModel($input, $output) : 0;
     }
 }

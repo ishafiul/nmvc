@@ -2,10 +2,13 @@
 
 namespace app\core;
 
+use Exception;
 use PDO;
 use PDOException;
 
 use Dotenv\Dotenv;
+use RuntimeException;
+
 $dotenv=Dotenv::createImmutable(dirname(__DIR__, 2));
 $dotenv->load();
 
@@ -15,6 +18,9 @@ class Database
     private $stmt;
     private $error;
 
+    /**
+     * @throws Exception
+     */
     public function __construct()
     {
         $dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
@@ -27,13 +33,19 @@ class Database
         try {
             $this->dbh = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASS'], $options);
         } catch (PDOException $e) {
-            $this->error = $e->getMessage();
-            echo $this->error;
+            throw new Exception(' Bad Gateway
+            <div>
+            <h4>Unable to Connect With Database!</h4>
+            <p>Host: '.$_ENV['DB_HOST'].'</p>
+            <p>DBname: '.$_ENV['DB_NAME'].'</p>
+            <p>UserName: '.$_ENV['DB_USER'].'</p>
+            </div>
+            ','502');
         }
     }
 
     // Prepare statement with query
-    public function query($sql)
+    public function query($sql):void
     {
         $this->stmt = $this->dbh->prepare($sql);
     }
